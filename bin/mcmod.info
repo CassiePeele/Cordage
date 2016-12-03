@@ -1,0 +1,15 @@
+[
+{
+  "modid": "cordage",
+  "name": "Cordage",
+  "description": "Adds shapeless crafting recipes for string.",
+  "version": "1.10.2-1.1",
+  "mcversion": "${mcversion}",
+  "url": "http://minecraftforum.net/forums/mapping-and-modding/minecraft-mods/2732791",
+  "updateUrl": "",
+  "authorList": ["Cassie"],
+  "logoFile": "/CordageLogo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]

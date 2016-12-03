@@ -1,0 +1,16 @@
+*/.DS_Store
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+/.gradle
+/build
+/run*/
+*.launch
+/step1_setupDecompWorkspace
+/step2_eclipse
+/step3_build
+/.classpath
+/.project
+/.settings
+/eclipse
