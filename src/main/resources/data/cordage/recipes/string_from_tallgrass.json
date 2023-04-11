@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:tallgrass"
+    },
+    {
+      "tag": "forge:tallgrass"
+    }
+  ],
+  "result": {
+    "item": "minecraft:string"
+  }
+}

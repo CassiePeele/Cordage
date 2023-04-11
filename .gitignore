@@ -1,16 +1,25 @@
-*/.DS_Store
-.DS_Store
-.DS_Store?
-.Spotlight-V100
-.Trashes
-/.gradle
-/build
-/run*/
+# eclipse
+bin
 *.launch
-/step1_setupDecompWorkspace
-/step2_eclipse
-/step3_build
-/.classpath
-/.project
-/.settings
-/eclipse
+.settings
+.metadata
+.classpath
+.project
+
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run
+
+# Files from Forge MDK
+forge*changelog.txt

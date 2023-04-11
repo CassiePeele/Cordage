@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "cordage:sinew"
+    },
+    {
+      "item": "cordage:sinew"
+    }
+  ],
+  "result": {
+    "item": "minecraft:string"
+  }
+}

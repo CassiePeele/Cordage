@@ -1,33 +1,64 @@
 package com.cassiepeele.cordage;
 
-import com.cassiepeele.cordage.init.ModItems;
-import com.cassiepeele.cordage.proxy.CommonProxy;
-
+import com.cassiepeele.cordage.item.ModItems;
+import com.mojang.logging.LogUtils;
+import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.Mod.Instance;
-import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.slf4j.Logger;
 
-@Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION, acceptedMinecraftVersions = Reference.ACCEPTED_VERSIONS)
-public class Cordage {
-	@Instance
-	public static Cordage instance;
-	
-	@SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
-	public static CommonProxy proxy;
+// The value here should match an entry in the META-INF/mods.toml file
+@Mod(Cordage.MOD_ID)
+public class Cordage
+{
+    // Define mod id in a common place for everything to reference
+    public static final String MOD_ID = "cordage";
+    // Directly reference a slf4j logger
+    private static final Logger LOGGER = LogUtils.getLogger();
 
-	@EventHandler
-	public void preinit(FMLPreInitializationEvent event) {
-		ModItems.init();
-		ModItems.register();
-	}
-	
-	@EventHandler
-	public void init(FMLInitializationEvent event) {
-		proxy.registerRenders();
-		ModCrafting.register();
-	}
+    public Cordage()
+    {
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        ModItems.register(modEventBus);
+
+        // Register the commonSetup method for modloading
+        modEventBus.addListener(this::commonSetup);
+
+        // Register ourselves for server and other game events we are interested in
+        MinecraftForge.EVENT_BUS.register(this);
+
+        // Register the item to a creative tab
+        modEventBus.addListener(this::addCreative);
+    }
+
+    private void commonSetup(final FMLCommonSetupEvent event)
+    {
+
+    }
+
+    private void addCreative(CreativeModeTabEvent.BuildContents event)
+    {
+        if(event.getTab() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.SINEW);
+        }
+    }
+
+    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static class ClientModEvents
+    {
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event)
+        {
+
+        }
+    }
 }
