@@ -2,10 +2,8 @@ package com.cassiepeele.cordage;
 
 import com.cassiepeele.cordage.item.ModItems;
 import com.mojang.logging.LogUtils;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -34,21 +32,11 @@ public class Cordage
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
-
-        // Register the item to a creative tab
-        modEventBus.addListener(this::addCreative);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
 
-    }
-
-    private void addCreative(CreativeModeTabEvent.BuildContents event)
-    {
-        if(event.getTab() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ModItems.SINEW);
-        }
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
