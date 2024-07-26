@@ -28,5 +28,5 @@ You can also turn rotten flesh into sinew, which can in turn be made into string
 [tallgrass recipe]: images/grass_string.gif "tallgrass recipe"
 [saplings recipe]: images/saplings_string.gif "saplings recipe"
 [vines recipe]: images/vines_string.gif "vines recipe"
-[sinew recipe]: images/flesh_sinew.gif "vines recipe"
+[sinew recipe]: images/flesh_sinew.gif "sinew recipe"
 [sinew-string recipe]: images/sinew_string.gif "sinew to string recipe"
